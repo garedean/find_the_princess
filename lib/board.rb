@@ -17,6 +17,8 @@ class Board
       n = gets.to_i
     end
 
+    display_loading_bar
+
     # Populate board with blank spaces, "-".
     n.times do |i|
       n.times do |j|
@@ -38,6 +40,18 @@ class Board
     grid[m_location[0]][m_location[1]] = "M"
 
     @layout = grid
+  end
+
+  def display_loading_bar
+    puts ""
+    print "Setting up the board "
+    sleep(0.5)
+    6.times do
+      print ". "
+      sleep(0.5)
+    end
+    sleep 1
+    print "\r" + ("\e[K"*10)
   end
 
   def print_board_layout
